@@ -59,6 +59,7 @@ namespace CityInfo.API
             services.AddScoped<ICityService, CitySevice>();
             // services.AddScoped<IPointOfInterestService, CitySevice>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IReadConfig, ConfigService>();
            
 
             // services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CityInfo;Trusted_Connection=True;"));

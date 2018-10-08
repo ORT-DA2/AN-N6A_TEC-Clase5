@@ -1,4 +1,5 @@
 ﻿using CityInfo.Contracts.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace CItyInfo.Services
 {
@@ -6,13 +7,12 @@ namespace CItyInfo.Services
     {
         public string GetDevName()
         {
-            /*var configurationBuilder = new ConfigurationBuilder();
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
-            configurationBuilder.AddJsonFile(path, false);
+            var configurationBuilder = new ConfigurationBuilder();
+            configurationBuilder.AddJsonFile("appsettings.json");
 
-            var root = configurationBuilder.Build();*/
+            var config = configurationBuilder.Build();
 
-            return null;
+            return config["developer"];
         }
     }
 }
