@@ -61,7 +61,11 @@ namespace CityInfo.API
             services.AddScoped<IUserService, UserService>();
            
 
-            services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CityInfo;Trusted_Connection=True;"));
+            // services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CityInfo;Trusted_Connection=True;"));
+            
+            services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("CityDb")));
+            //services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(Configuration.GetSection("ConnectionStrings")["CityDb"]));
+            services.AddDbContext<CityInfoContext>(o => o.UseSqlServer(Configuration["ConnectionStrings.CityDb"]));
 
             //Ejemplo de EF en Memoria
             //services.AddDbContext<DomainContext>(options => options.UseInMemoryDatabase(Configuration.GetConnectionString("WACDatabase")
