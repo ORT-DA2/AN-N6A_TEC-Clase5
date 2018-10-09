@@ -29,7 +29,7 @@ namespace CityInfo.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // https://docs.microsoft.com/en-us/ef/core/modeling/relationships#fluent-api
-            modelBuilder.Entity<City>().Ignore(c => c.PointsOfInterest);
+            // modelBuilder.Entity<City>().Ignore(c => c.PointsOfInterest);
 
             // If  you are using Fluent Api ,use Configuration classes to keep separation of concerns and an clean context
             modelBuilder.ApplyConfiguration(new PointOfInterestConfiguration());
@@ -41,35 +41,40 @@ namespace CityInfo.DataAccess
                     Id = 1,
                     Name = "New York City",
                     Description = "Great park in the middle",
-                    PointsOfInterest = new List<PointOfInterest>()
+                    /*PointsOfInterest = new List<PointOfInterest>()
                     {
                         new PointOfInterest(){Id = 10,Name = "Point 10", Description = "Welcome to point 10"},
                         new PointOfInterest(){Id = 11,Name = "Point 11", Description = "Welcome to point 11"},
                         new PointOfInterest(){Id = 12,Name = "Point 12", Description = "Welcome to point 12"}
-                    }
+                    }*/
                 },
                 new City()
                 {
                     Id = 2,
                     Name = "Boston",
                     Description = "the capital city and most populous municipality of the Commonwealth of Massachusetts in the United States.",
-                    PointsOfInterest = new List<PointOfInterest>()
+                    /*PointsOfInterest = new List<PointOfInterest>()
                     {
                         new PointOfInterest(){Id = 13,Name = "Point 13", Description = "Welcome to point 13"},
                         new PointOfInterest(){Id = 14,Name = "Point 14", Description = "Welcome to point 14"},
                         new PointOfInterest(){Id = 15,Name = "Point 15", Description = "Welcome to point 15"}
-                    }
+                    }*/
                 },
                 new City()
                 {
                     Id = 3,
                     Name = "London",
                     Description = "It was founded by the Romans, who named it Londinium",
-                    PointsOfInterest = new List<PointOfInterest>()
+                    /*PointsOfInterest = new List<PointOfInterest>()
                     {
                         new PointOfInterest(){Id = 16,Name = "Point 16", Description = "Welcome to point 16"}
-                    }
+                    }*/
                 });
+
+            modelBuilder.Entity<PointOfInterest>().HasData(
+                new PointOfInterest(){Id = 13,Name = "Point 13", Description = "Welcome to point 13", CityId = 3 }
+            );
+
             var sessionId = Guid.NewGuid();
             modelBuilder.Entity<Session>().HasData(new {Id = sessionId, Role = "Admin", UserId = 1});
             modelBuilder.Entity<User>().HasData(new { Id=1, Name = "Juan", Password = "pwd", UserName = "juan89", SessionId= sessionId});

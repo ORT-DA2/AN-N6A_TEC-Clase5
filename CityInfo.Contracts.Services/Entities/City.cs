@@ -12,7 +12,7 @@ namespace CityInfo.Contracts.Services.Entities
 
         public int NumberOfPointsOfInterest => this.PointsOfInterest.Count;
 
-        public List<PointOfInterest> PointsOfInterest { get; set; } = new List<PointOfInterest>();
+        public virtual List<PointOfInterest> PointsOfInterest { get; set; } = new List<PointOfInterest>();
 
         public CityImage Image { get; set; }
     }
